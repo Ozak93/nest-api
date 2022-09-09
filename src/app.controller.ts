@@ -19,7 +19,7 @@ export class AppController {
   @Post('PostExample')
   async postLink(@Body() linkDto: PostLink,  @Query('x') x:string ) {
    
-    return `this is an API request with Body ${linkDto.num} and ${x}`;
+    return `this is an API request with Body ${JSON.stringify(linkDto)} \n and parameters:x=${x} URL:${URL}`;
 
   }
 }
