@@ -1,21 +1,37 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-
+import cors from 'cors';
+import helmet from 'helmet';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule,{ abortOnError: false });
+  const app = await NestFactory.create(AppModule, { abortOnError: false });
 
-  const config= new DocumentBuilder()
-  .setTitle('Cats example')
-  .setDescription('The cats API description')
-  .setVersion('1.0')
-  .addTag('cats')
-  .build();
+  const whitelist = ['https://mzfywknope.eu11.qoddiapp.com, http://localhost'];
+
+  const config = new DocumentBuilder()
+    .setTitle('Cats example')
+    .setDescription('The cats API description')
+    .setVersion('1.0')
+    .addTag('cats')
+    .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api',app,document);
-  
-  await app.listen(3000);
+  SwaggerModule.setup('api', app, document);
+
+  const corsOptionsDelegate = function (req, callback) {
+    let corsOptions;
+    if (whitelist.indexOf(req.header('Origin')) !== -1) {
+      corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
+    } else {
+      corsOptions = { origin: false }; // disable CORS for this request
+    }
+    callback(null, corsOptions); // callback expects two parameters: error and options
+  };
+
+  app.use(cors(corsOptionsDelegate));
+  app.use(helmet());
+
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
