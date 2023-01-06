@@ -22,7 +22,8 @@ export class MessageGateway implements OnGatewayInit, OnGatewayDisconnect,OnGate
 
   private logger: Logger = new Logger('MessageGateway');
   constructor(){
-      this.logger.log("socket gateway initd");  
+      this.logger.log("socket gateway initd"); 
+      console.log("hi");
   }
   handleConnection(client: any, ...args: any[]) {
     this.logger.log("error with ",client);

@@ -5,7 +5,10 @@ import cors from 'cors';
 import helmet from 'helmet';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { abortOnError: false });
+  const app = await NestFactory.create(AppModule, {
+    abortOnError: false,
+    cors: true,
+  });
 
   const whitelist = ['https://mzfywknope.eu11.qoddiapp.com, http://localhost'];
 
@@ -29,7 +32,7 @@ async function bootstrap() {
     callback(null, corsOptions); // callback expects two parameters: error and options
   };
 
-  app.use(cors(corsOptionsDelegate));
+//  app.use(cors(corsOptionsDelegate));
   app.use(helmet());
 
   await app.listen(process.env.PORT || 3000);
