@@ -6,7 +6,7 @@ pipeline {
                 sh 'whoami '
                 sh 'npm install'
  
-                sh 'npm run build'
+                 
             }
         }
         stage('Deploy') {
@@ -15,7 +15,7 @@ pipeline {
 
                 sh 'whoami'
                 sh 'mkdir -p /var/www/devenv.digiarenas.com/apps/nest-api/'
-                sh 'cp -r dist/* /var/www/devenv.digiarenas.com/apps/nest-api/'
+                sh 'cp -r   /var/www/devenv.digiarenas.com/apps/nest-api/'
                 sh 'cd /var/www/devenv.digiarenas.com/apps/nest-api/'
             
                

@@ -10,7 +10,8 @@ async function bootstrap() {
     cors: true,
   });
 
-  const whitelist = ['https://mzfywknope.eu11.qoddiapp.com, http://localhost'];
+  // eslint-disable-next-line prettier/prettier
+  const whitelist = ['https://mzfywknope.eu11.qoddiapp.com, http://localhost, http://127.0.0.1'];
 
   const config = new DocumentBuilder()
     .setTitle('Cats example')
