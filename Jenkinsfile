@@ -14,8 +14,9 @@ pipeline {
             
 
                 sh 'whoami'
+                sh 'pwd'
                 sh 'mkdir -p /var/www/devenv.digiarenas.com/apps/nest-api/'
-                sh 'cp -r   /var/www/devenv.digiarenas.com/apps/nest-api/'
+                sh 'cp -R    /var/www/devenv.digiarenas.com/apps/nest-api/'
                 sh 'cd /var/www/devenv.digiarenas.com/apps/nest-api/'
             
                
