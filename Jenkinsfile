@@ -32,7 +32,7 @@ pipeline {
                 sh 'export JENKINS_SERVER_COOKIE=dontKillMe'
                
                  sh 'cd /var/www/devenv.digiarenas.com/apps/nest-api/'
-                sh 'sudo pm2 start  --name "nest-api-app"'
+                sh 'sudo pm2 start main.js --name "nest-api-app"'
                 sh 'sudo pm2 save'
               }  
         
