@@ -14,7 +14,7 @@ pipeline {
             
 
                 sh 'whoami'
-                sh 'cp -r dist/* /var/www/devenv.digiarenas.com/apps'
+                sh 'cp -r dist/* /var/www/devenv.digiarenas.com/apps/nest-api'
                 sh 'cd /var/www/devenv.digiarenas.com/apps/nest-api/ '
             
                
